@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { Footer } from '../components/Footer'
+import { Header } from '../components/Header'
 import { Main } from '../components/Main'
 
 export default function Home() {
@@ -9,11 +10,9 @@ export default function Home() {
         <title>About</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      <Header />
       <Main page="about"/>
-
       <Footer />
-
       <style jsx>{`
         .container {
           min-height: 100vh;

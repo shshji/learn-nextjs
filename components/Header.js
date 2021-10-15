@@ -1,18 +1,16 @@
-// import styles from './Footer.modules.css'
-export function Footer() {
+import Link from 'next/link'
+export function Header() {
   return (
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Thanks by{' '}
-          <img src="/vercel.svg" alt="Vercel" className="logo" />
-        </a>
-        <style jsx>{`
+    <header>
+      <Link href="/">
+        <a className="anchor">Index</a>
+      </Link>
+      <Link href="/about">
+        <a className="anchor">About</a>
+      </Link>
+      <style jsx>{`
 
-        footer {
+        header {
           width: 100%;
           height: 100px;
           border-top: 1px solid #eaeaea;
@@ -21,23 +19,24 @@ export function Footer() {
           align-items: center;
         }
 
-        footer img {
-          margin-left: 0.5rem;
-        }
-
-        footer a {
+        header a {
           display: flex;
           justify-content: center;
           align-items: center;
         }
 
-        a {
+        .anchor {
           color: inherit;
           text-decoration: none;
+          font-size:1.4rem;
+          padding: 5px 10px;
         }
 
-        .logo {
-          height: 1em;
+        .anchor:hover,
+        .anchor:focus,
+        .anchor:active {
+          color: #0070f3;
+          border-color: #0070f3;
         }
       `}</style>
 
@@ -55,6 +54,6 @@ export function Footer() {
           box-sizing: border-box;
         }
       `}</style>
-      </footer>
+    </header>
   );
 }
