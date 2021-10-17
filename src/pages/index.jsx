@@ -1,16 +1,16 @@
 import Head from 'next/head'
-import { useCallback, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Footer } from 'src/components/Footer'
 import { Header } from 'src/components/Header';
 import { Main } from 'src/components/Main';
 
 export default function Home() {
-  const foo = 1;
-  const handleClick = useCallback((e) => {
-    console.log(e.target.href)
-    e.preventDefault();
-    alert(foo);
-  },[]);
+
+  const [count, setCount] = useState(1);
+  const handleClick = (e) => {
+    setCount((foo) => foo + 1);
+    setCount((foo) => foo + 1);
+  };
 
   useEffect(() => {
     document.body.style.backgroundColor = "lightblue"
@@ -26,7 +26,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <a href="/about" onClick={handleClick}>button</a>
+      <h1>{count}</h1>
+      <button onClick={handleClick}>button</button>
       <Main page="index"/>
 
       <Footer />
