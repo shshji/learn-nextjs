@@ -11,7 +11,7 @@ export default function Home() {
   const [isShow, setIsShow] = useState(true);
   const handleClick = useCallback(() => {
     if(count < 10){
-      setCount((foo) => foo + 1);
+      setCount((prevCount) => prevCount + 1);
     }
   },[count]);
 
@@ -24,7 +24,7 @@ export default function Home() {
   },[]);
   
   const handleShow = useCallback(() => {
-    setIsShow((isShow) => !isShow);
+    setIsShow((prevIsShow) => !prevIsShow);
   },[]);
 
   useEffect(() => {
