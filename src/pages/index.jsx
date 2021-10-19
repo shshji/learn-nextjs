@@ -9,6 +9,8 @@ export default function Home() {
   const [count, setCount] = useState(1);
   const [text, setText] = useState("");
   const [isShow, setIsShow] = useState(true);
+  const [array, setArray] = useState([]);
+
   const handleClick = useCallback(() => {
     if(count < 10){
       setCount((prevCount) => prevCount + 1);
@@ -26,6 +28,18 @@ export default function Home() {
   const handleShow = useCallback(() => {
     setIsShow((prevIsShow) => !prevIsShow);
   },[]);
+
+  const handleAdd = useCallback(() => {
+    setArray((prevArray) => {
+      if(prevArray.some(item => item === text)){
+        alert("同じアイテムが既に素材しています。");
+        return prevArray;
+      }
+      // const newArray = [...prevArray,text];
+      // return newArray;
+      return [...prevArray, text];
+    });
+  },[text]);
 
   useEffect(() => {
     document.body.style.backgroundColor = "lightblue"
@@ -46,7 +60,15 @@ export default function Home() {
       <button onClick={handleShow}>
         {isShow ? "非表示" : "表示"}
       </button>
+      <button onClick={handleAdd}>追加</button>
       <input type="text" value={text} onChange={handleChange}/>
+      <ul>
+        {array.map(item =>{
+          return (
+            <li key={item}>{item}</li>
+          )
+        })}
+      </ul>
       <Main page="index"/>
 
       <Footer />
