@@ -2,8 +2,15 @@ import Head from 'next/head'
 import { Footer } from 'src/components/Footer'
 import { Header } from 'src/components/Header'
 import { Main } from 'src/components/Main'
+import { useBgLightblue } from 'src/hooks/useBgLightblue';
+import { useCounter } from 'src/hooks/useCounter';
+import { useInputArray } from 'src/hooks/useInputArray';
 
-export default function Home() {
+export default function Abut() {
+  const {count, isShow, handleClick, handleShow} = useCounter();  
+  const {text, array, handleChange, handleAdd} = useInputArray();
+  useBgLightblue();
+
   return (
     <div className="container">
       <Head>
@@ -11,6 +18,21 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
+      {isShow ? <h1>{count}</h1> : null}
+      <button onClick={handleClick}>button</button>
+      <button onClick={handleShow}>
+        {isShow ? "非表示" : "表示"}
+      </button>
+
+      <button onClick={handleAdd}>追加</button>
+      <input type="text" value={text} onChange={handleChange}/>
+      <ul>
+        {array.map(item =>{
+          return (
+            <li key={item}>{item}</li>
+          )
+        })}
+      </ul>
       <Main page="about"/>
       <Footer />
       <style jsx>{`

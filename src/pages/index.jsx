@@ -1,52 +1,15 @@
 import Head from 'next/head'
-import { useCallback, useEffect, useState } from 'react';
 import { Footer } from 'src/components/Footer'
 import { Header } from 'src/components/Header';
 import { Main } from 'src/components/Main';
+import { useBgLightblue } from 'src/hooks/useBgLightblue';
+import { useCounter } from 'src/hooks/useCounter';
+import { useInputArray } from 'src/hooks/useInputArray';
 
 export default function Home() {
-
-  const [count, setCount] = useState(1);
-  const [text, setText] = useState("");
-  const [isShow, setIsShow] = useState(true);
-  const [array, setArray] = useState([]);
-
-  const handleClick = useCallback(() => {
-    if(count < 10){
-      setCount((prevCount) => prevCount + 1);
-    }
-  },[count]);
-
-  const handleChange = useCallback((e) => {
-    if(e.target.value.length > 5){
-      alert("5文字以内にしてください");
-      return;
-    }
-    setText(e.target.value.trim());
-  },[]);
-  
-  const handleShow = useCallback(() => {
-    setIsShow((prevIsShow) => !prevIsShow);
-  },[]);
-
-  const handleAdd = useCallback(() => {
-    setArray((prevArray) => {
-      if(prevArray.some(item => item === text)){
-        alert("同じアイテムが既に素材しています。");
-        return prevArray;
-      }
-      // const newArray = [...prevArray,text];
-      // return newArray;
-      return [...prevArray, text];
-    });
-  },[text]);
-
-  useEffect(() => {
-    document.body.style.backgroundColor = "lightblue"
-    return() =>{
-      document.body.style.backgroundColor = ""
-    }
-  },[]);
+  const {count, isShow, handleClick, handleShow} = useCounter();  
+  const {text, array, handleChange, handleAdd} = useInputArray();
+  useBgLightblue();
 
   return (
     <div className="container">
@@ -60,6 +23,7 @@ export default function Home() {
       <button onClick={handleShow}>
         {isShow ? "非表示" : "表示"}
       </button>
+
       <button onClick={handleAdd}>追加</button>
       <input type="text" value={text} onChange={handleChange}/>
       <ul>
