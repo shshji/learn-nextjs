@@ -6,8 +6,9 @@ import { useBgLightblue } from 'src/hooks/useBgLightblue';
 import { useCounter } from 'src/hooks/useCounter';
 import { useInputArray } from 'src/hooks/useInputArray';
 
-export default function Abut() {
-  const {count, isShow, handleClick, handleShow} = useCounter();  
+export default function Abut(props) {
+  console.log(props);
+  const { doubleCount, isShow, handleClick, handleShow} = useCounter();  
   const {text, array, handleChange, handleAdd} = useInputArray();
   useBgLightblue();
 
@@ -18,7 +19,7 @@ export default function Abut() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      {isShow ? <h1>{count}</h1> : null}
+      {isShow ? <h1>{doubleCount}</h1> : null}
       <button onClick={handleClick}>button</button>
       <button onClick={handleShow}>
         {isShow ? "非表示" : "表示"}
