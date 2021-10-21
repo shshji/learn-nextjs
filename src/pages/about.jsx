@@ -6,8 +6,7 @@ import { useBgColor } from 'src/hooks/useBgColor';
 import { useCounter } from 'src/hooks/useCounter';
 import { useInputArray } from 'src/hooks/useInputArray';
 
-export default function Abut(props) {
-  console.log(props);
+const About = (props) => {
   const { doubleCount, isShow, handleClick, handleShow} = useCounter();  
   const {text, array, handleChange, handleAdd} = useInputArray();
   useBgColor();
@@ -184,3 +183,5 @@ export default function Abut(props) {
     </div>
   )
 }
+
+export default About;

@@ -6,7 +6,7 @@ import { useBgColor } from 'src/hooks/useBgColor';
 import { useCounter } from 'src/hooks/useCounter';
 import { useInputArray } from 'src/hooks/useInputArray';
 
-export default function Home(props) {
+const Home = (props) => {
   const {count, isShow, handleClick, handleShow} = useCounter();  
   const {text, array, handleChange, handleAdd} = useInputArray();
   useBgColor();
@@ -185,3 +185,5 @@ export default function Home(props) {
     </div>
   )
 }
+
+export default Home;

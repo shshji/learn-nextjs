@@ -1,5 +1,5 @@
 // import styles from './Footer.modules.css'
-export function Footer() {
+export const Footer = () => {
   return (
       <footer>
         <a
