@@ -1,13 +1,20 @@
 // import App from 'next/app'
 import Head from 'next/head'
+import { useBgColor } from 'src/hooks/useBgColor';
+import { useCounter } from 'src/hooks/useCounter';
+import { useInputArray } from 'src/hooks/useInputArray';
 
 function MyApp({ Component, pageProps }) {
+  const counter = useCounter();  
+  const inputArray = useInputArray();
+  useBgColor();
+
   return(
     <>
       <Head>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Component {...pageProps} />
+      <Component {...pageProps} {...counter} {...inputArray}/>
     </>
   )
 }
@@ -20,7 +27,7 @@ function MyApp({ Component, pageProps }) {
 // MyApp.getInitialProps = async (appContext) => {
 //   // calls page's `getInitialProps` and fills `appProps.pageProps`
 //   const appProps = await App.getInitialProps(appContext);
-//
+
 //   return { ...appProps }
 // }
 

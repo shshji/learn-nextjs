@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { Footer } from 'src/components/Footer'
 import { Header } from 'src/components/Header'
 import { Main } from 'src/components/Main'
-import { useBgLightblue } from 'src/hooks/useBgLightblue';
+import { useBgColor } from 'src/hooks/useBgColor';
 import { useCounter } from 'src/hooks/useCounter';
 import { useInputArray } from 'src/hooks/useInputArray';
 
@@ -10,7 +10,7 @@ export default function Abut(props) {
   console.log(props);
   const { doubleCount, isShow, handleClick, handleShow} = useCounter();  
   const {text, array, handleChange, handleAdd} = useInputArray();
-  useBgLightblue();
+  useBgColor();
 
   return (
     <div className="container">
